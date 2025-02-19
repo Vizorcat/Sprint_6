@@ -23,7 +23,6 @@ class OrderPage(BasePage):
         if metro_station:
             metro_input = self.find_element(self.METRO_INPUT)
             metro_input.send_keys(metro_station)
-            self.wait_for_element(self.METRO_DROPDOWN_OPTION)
             metro_input.send_keys(Keys.ARROW_DOWN)
             metro_input.send_keys(Keys.ENTER)
 
@@ -34,6 +33,3 @@ class OrderPage(BasePage):
 
     def get_success_message(self):
         return self.get_text(self.SUCCESS_MODAL)
-
-    def wait_for_element(self, METRO_DROPDOWN_OPTION):
-        pass

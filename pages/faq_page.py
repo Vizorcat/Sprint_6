@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 
@@ -26,11 +27,14 @@ class FAQPage(BasePage):
 
     ]
 
+    @allure.step("Прокрутка до раздела FAQ")
     def scroll_to_faq_section(self):
-        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        self.scroll_to_element(self.QUESTION_LOCATORS[0])
 
+    @allure.step("Нажатие на вопрос с индексом {index}")
     def click_question(self, index):
         self.click_element(self.QUESTION_LOCATORS[index])
 
+    @allure.step("Получение текста ответа на вопрос с индексом {index}")
     def get_answer_text(self, index):
         return self.get_text(self.ANSWER_LOCATORS[index])
